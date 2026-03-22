@@ -17,6 +17,15 @@ str(df)
 #check missing values
 sum(is.na(df))
 
+#univarate analysis
+#summary of independent variable
+summary(df$WorkLifeBalance)
+sd(df$WorkLifeBalance)
 
+#frequency table
+wlb_table <- table(df$WorkLifeBalance)
+print(wlb_table)
 
+#propotions
+prop.table(wlb_table) * 100
 
