@@ -29,3 +29,25 @@ print(wlb_table)
 #propotions
 prop.table(wlb_table) * 100
 
+#univarate visualizations
+#bar chart for work life balance
+# Visualizing Work-Life Balance Distribution (LO2)
+ggplot(df, aes(x = as.factor(WorkLifeBalance), fill = as.factor(WorkLifeBalance))) +
+  geom_bar() +
+  scale_fill_brewer(palette = "Blues") +
+  theme_minimal() +
+  labs(title = "Distribution of Work-Life Balance Levels",
+       subtitle = "Visualizing the spread of the Independent Variable",
+       x = "Work-Life Balance Level (1=Bad, 4=Best)", 
+       y = "Count of Employees",
+       fill = "WLB Level")
+
+#histogram for monthly income distribution
+ggplot(df, aes(x = MonthlyIncome)) +
+  geom_histogram(bins = 30, fill = "midnightblue", color = "white") +
+  theme_light() +
+  labs(title = "Distribution of Monthly Income",
+       subtitle = "Checking for Skewness in Employee Salary",
+       x = "Monthly Income ($)", 
+       y = "Number of Employees")
+
