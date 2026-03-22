@@ -51,3 +51,25 @@ ggplot(df, aes(x = MonthlyIncome)) +
        x = "Monthly Income ($)", 
        y = "Number of Employees")
 
+# Bivariate Analysis
+# box plot for Monthly Income vs. Work-Life Balance (LO2)
+ggplot(df, aes(x = as.factor(WorkLifeBalance), y = MonthlyIncome, fill = as.factor(WorkLifeBalance))) +
+  geom_boxplot(outlier.colour = "red", outlier.shape = 16, outlier.size = 2) +
+  theme_light() +
+  scale_fill_brewer(palette = "Blues") +
+  labs(title = "Monthly Income Distribution by Work-Life Balance Level",
+       subtitle = "A traditional boxplot showing Medians, Quartiles, and Outliers",
+       x = "Work-Life Balance Level (1-4)", 
+       y = "Monthly Income ($)",
+       fill = "WLB Level")
+
+
+#stacked bar chart for proportions work-life balance vs. performance rating
+ggplot(df, aes(x = as.factor(WorkLifeBalance), fill = as.factor(PerformanceRating))) +
+  geom_bar(position = "fill") +
+  scale_y_continuous(labels = scales::percent) +
+  scale_fill_manual(values = c("#A1D99B", "#238B45"), name = "Performance") + 
+  theme_classic() +
+  labs(title = "Proportion of Performance Ratings by WLB Level",
+       x = "Work-Life Balance Level (1-4)", 
+       y = "Percentage of Employees (%)")
