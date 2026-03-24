@@ -65,11 +65,48 @@ ggplot(df, aes(x = as.factor(WorkLifeBalance), y = MonthlyIncome, fill = as.fact
 
 
 #stacked bar chart for proportions work-life balance vs. performance rating
+# Proportional Bar Chart
 ggplot(df, aes(x = as.factor(WorkLifeBalance), fill = as.factor(PerformanceRating))) +
   geom_bar(position = "fill") +
-  scale_y_continuous(labels = scales::percent) +
-  scale_fill_manual(values = c("#A1D99B", "#238B45"), name = "Performance") + 
-  theme_classic() +
-  labs(title = "Proportion of Performance Ratings by WLB Level",
+  scale_y_continuous(labels = percent) +
+  scale_fill_manual(values = c("#99d8c9", "#2ca25f")) +
+  theme_minimal() +
+  labs(title = "Performance Rating Proportions by Work-Life Balance",
        x = "Work-Life Balance Level (1-4)", 
-       y = "Percentage of Employees (%)")
+       y = "Percentage (%)", 
+       fill = "Performance Rating")
+
+
+#create correlation heatmap
+# 1. Select only the numeric columns (correlation doesn't work on text)
+numeric_data <- df %>% select_if(is.numeric)
+
+# 2. Create the matrix (the object R says is missing)
+cor_matrix <- cor(numeric_data, use = "complete.obs")
+
+# 3. NOW run your corrplot command
+corrplot(cor_matrix, 
+         method = "color", 
+         type = "upper", 
+         order = "hclust", 
+         addCoef.col = "black", 
+         number.cex = 0.7, 
+         tl.col = "black", 
+         tl.srt = 45, 
+         diag = FALSE, 
+         title = "\n\n Correlation Heatmap of Employee Features",
+         mar = c(0,0,1,0))
+
+# This will find the existing file and replace its contents with the new plot
+png(height=800, width=800, file="results/plots/05_correlation_heatmap.png")
+
+corrplot(cor_matrix, 
+         method="color", 
+         type="upper", 
+         order="hclust", 
+         addCoef.col="black", 
+         tl.col="black", 
+         tl.srt=45, 
+         diag=FALSE)
+
+dev.off() # This "closes" the file and saves the changes
