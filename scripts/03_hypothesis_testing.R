@@ -47,3 +47,22 @@ print(levene_result)
 
 # Save output
 capture.output(levene_result, file = "results/tables/levene_test.txt")
+
+# 5. Tukey Post Hoc Test
+tukey_result <- TukeyHSD(anova_model)
+print(tukey_result)
+capture.output(tukey_result, file = "results/tables/tukey_results.txt")
+
+# 6. Diagnostic Plots (Saving as PNG)
+png("results/plots/residuals_vs_fitted.png")
+plot(anova_model, 1)
+dev.off()
+
+png("results/plots/qq_plot.png")
+plot(anova_model, 2)
+dev.off()
+
+# 7. Group Means
+group_means <- aggregate(PerformanceRating ~ WorkLifeBalance, data = data, mean)
+print(group_means)
+write.csv(group_means, "results/tables/group_means.csv", row.names = FALSE)
