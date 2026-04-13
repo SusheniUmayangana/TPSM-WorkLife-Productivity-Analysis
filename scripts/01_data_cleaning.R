@@ -39,7 +39,11 @@ cleaned_data <- raw_data[, !(names(raw_data) %in% cols_to_remove)]
 # 5. Data Transformation
 # Ensure Performance and WorkLifeBalance are numbers for the model
 cleaned_data$WorkLifeBalance <- as.numeric(cleaned_data$WorkLifeBalance)
-cleaned_data$PerformanceRating <- as.numeric(cleaned_data$PerformanceRating)
+
+# Convert PerformanceRating into a Binary Factor (0 and 1)
+# 3 becomes 0, 4 becomes 1
+cleaned_data$Performance_Binary <- ifelse(cleaned_data$PerformanceRating == 4, 1, 0)
+cleaned_data$Performance_Binary <- as.factor(cleaned_data$Performance_Binary)
 
 
 # Convert Categories to Factors (Important for Regression)
