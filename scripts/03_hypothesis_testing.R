@@ -32,3 +32,21 @@ if(!require(car)) install.packages("car")
 library(car)
 levene_result <- leveneTest(Performance_Binary ~ WorkLifeBalance, data = data)
 capture.output(levene_result, file = "results/tables/levene_test.txt")
+
+# --- 6. NORMALITY TEST (RESIDUALS) ---
+# Required for LO2: Ensuring the ANOVA residuals are normally distributed
+shapiro_result <- shapiro.test(residuals(anova_model))
+print(shapiro_result)
+capture.output(shapiro_result, file = "results/tables/shapiro_test.txt")
+
+# --- 7. TUKEY POST-HOC TEST ---
+# Comparing specific groups (e.g., Level 1 vs Level 4)
+tukey_result <- TukeyHSD(anova_model)
+print(tukey_result)
+capture.output(tukey_result, file = "results/tables/tukey_results.txt")
+
+# --- 8. GROUP MEANS TABLE ---
+# Descriptive summary to support your inferential findings
+group_stats <- aggregate(Performance_Binary ~ WorkLifeBalance, data = data, 
+                         FUN = function(x) c(mean = mean(x), sd = sd(x)))
+write.csv(group_stats, "results/tables/group_stats_summary.csv")
