@@ -6,7 +6,7 @@ library(scales) #format chart axes
 install.packages(c("tidyverse", "corrplot", "scales"))
 
 #load the preprocessed dataset
-df <- read.csv("data/processed/cleaned_hr_data.csv")
+df <- read.csv("data/processed/cleaned_hr_data_.csv")
 head(df)
 
 #view dimensions and columns and check data types
@@ -37,10 +37,8 @@ ggplot(df, aes(x = as.factor(WorkLifeBalance), fill = as.factor(WorkLifeBalance)
   scale_fill_brewer(palette = "Blues") +
   theme_minimal() +
   labs(title = "Distribution of Work-Life Balance Levels",
-       subtitle = "Visualizing the spread of the Independent Variable",
-       x = "Work-Life Balance Level (1=Bad, 4=Best)", 
-       y = "Count of Employees",
-       fill = "WLB Level")
+       x = "Work-Life Balance Level (1-4)", y = "Count of Employees")
+ggsave("results/plots/01_wlb_distribution.png", width = 8, height = 6)
 
 #histogram for monthly income distribution
 ggplot(df, aes(x = MonthlyIncome)) +
