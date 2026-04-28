@@ -1,0 +1,3 @@
+                  Df Sum Sq Mean Sq F value Pr(>F)
+WorkLifeBalance    3   0.02  0.0077   0.059  0.981
+Residuals       1466 191.23  0.1304               
