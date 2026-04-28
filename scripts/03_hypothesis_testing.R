@@ -1,6 +1,6 @@
 # -------------------------------------------------------------------------
 # Script 03: Inferential Analysis & ANOVA
-# Member:  D G H (IT2)
+# Member: Navoda D G H (IT23265806)
 # Goal: Perform correlation, hypothesis testing, ANOVA, and post-hoc analysis
 # -------------------------------------------------------------------------
 
