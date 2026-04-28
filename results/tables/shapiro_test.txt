@@ -1,0 +1,6 @@
+
+	Shapiro-Wilk normality test
+
+data:  residuals(anova_model)
+W = 0.44053, p-value < 2.2e-16
+

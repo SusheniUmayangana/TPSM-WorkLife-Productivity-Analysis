@@ -1,0 +1,14 @@
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = Performance_Binary ~ WorkLifeBalance, data = data)
+
+$WorkLifeBalance
+            diff         lwr        upr     p adj
+2-1 -0.018059856 -0.13525343 0.09913372 0.9788997
+3-1 -0.011904762 -0.12143418 0.09762465 0.9923759
+4-1 -0.014942529 -0.14537968 0.11549463 0.9911022
+3-2  0.006155094 -0.05388981 0.06620000 0.9935836
+4-2  0.003117327 -0.08974036 0.09597501 0.9997693
+4-3 -0.003037767 -0.08601311 0.07993758 0.9997010
+
