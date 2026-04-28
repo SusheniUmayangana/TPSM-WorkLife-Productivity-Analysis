@@ -1,7 +1,7 @@
   Tukey multiple comparisons of means
     95% family-wise confidence level
 
-Fit: aov(formula = PerformanceRating ~ WorkLifeBalance, data = data)
+Fit: aov(formula = Performance_Binary ~ WorkLifeBalance, data = data)
 
 $WorkLifeBalance
             diff         lwr        upr     p adj

@@ -1,7 +1,7 @@
 
 	Spearman's rank correlation rho
 
-data:  as.numeric(data$WorkLifeBalance) and data$PerformanceRating
+data:  as.numeric(data$WorkLifeBalance) and data$Performance_Binary
 S = 529291693, p-value = 0.9926
 alternative hypothesis: true rho is not equal to 0
 sample estimates:
